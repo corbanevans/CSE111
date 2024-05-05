@@ -89,6 +89,24 @@ def get_verb(quantity, tense):
     verb = random.choice(verbs)
     return verb
 
+def get_adjective():
+    adjectives = ["beautiful", "tall", "friendly", "blue", "fast"]
+    return random.choice(adjectives)
+
+def get_adverb():
+    adverbs = ["quickly", "happily", "slowly", "loudly", "carefully"]
+    return random.choice(adverbs)
+
+def get_preposition():
+    prepositions = ["for", "off", "on", "above", "at", "about", "across", "near", "under", "without", "from", "behind"]
+    return random.choice(prepositions)
+
+def get_prepositional_phrase(quantity, tense):
+    determiner = get_determiner(quantity)
+    noun = get_noun(quantity)
+    preposition = get_preposition()
+    return f"{preposition} {determiner} {noun}"
+
 def make_sentence(quantity, tense):
     """Build and return a sentence with three words:
     a determiner, a noun, and a verb. The grammatical
@@ -98,10 +116,13 @@ def make_sentence(quantity, tense):
     and tense in the quantity and tense parameters.
     """
     determiner = get_determiner(quantity)
+    adjective = get_adjective()
     noun = get_noun(quantity)
     verb = get_verb(quantity, tense)
-
-    sentence = f"{determiner.capitalize()} {noun} {verb}."
+    adverb = get_adverb()
+    prepositional_phrase1 = get_prepositional_phrase(quantity, tense)
+    prepositional_phrase2 = get_prepositional_phrase(quantity, tense)
+    return f"{determiner} {adjective} {noun} {verb} {adverb} {prepositional_phrase1} {prepositional_phrase2}."
     return sentence
 
 def main():
