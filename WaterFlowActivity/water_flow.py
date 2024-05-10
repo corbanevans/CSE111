@@ -1,3 +1,5 @@
+""" Includes extra lines of code allowing for conversion from kPa to psi, and the test program checks this as well """
+
 def water_column_height(tower_height, tank_height):
     return tower_height + 3 * tank_height / 4
 
@@ -24,6 +26,8 @@ def pressure_loss_from_pipe_reduction(larger_diameter, fluid_velocity, reynolds_
     density_of_water = 998.2  # kg/m^3
     return (-k * density_of_water * (fluid_velocity**2)) / 2000
 
+
+""" kPa to psi conversion formula """
 def kpa_to_psi(pressure_kpa):
     return pressure_kpa * 0.145038
 
@@ -70,6 +74,8 @@ def main():
 
     print(f"Pressure at house: {pressure:.1f} kilopascals")
 
+    
+    """ Prints psi as well as kPa """
     pressure_psi = kpa_to_psi(pressure)
     print(f"Pressure at house: {pressure_psi:.1f} psi")
 
